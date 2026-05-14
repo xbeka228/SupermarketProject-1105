@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# .NET build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Publish output
+publish/
+*.nupkg

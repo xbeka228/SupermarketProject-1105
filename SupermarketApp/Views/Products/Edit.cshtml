@@ -1,0 +1,20 @@
+@model SupermarketApp.Models.Product
+@{ var isKz = Context.Request.Cookies[".AspNetCore.Culture"]?.Contains("kk") == true; }
+<div class="container mt-5">
+    <div class="col-md-6 offset-md-3 card shadow p-4">
+        <h4>@(isKz ? "Өңдеу" : "Редактировать")</h4>
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3"><label>@(isKz ? "Атауы" : "Название")</label><input asp-for="Name" class="form-control" /></div>
+            <div class="mb-3">
+                <label>@(isKz ? "Санаты" : "Категория")</label>
+                <select asp-for="Category" class="form-select">
+                    @foreach (var cat in ViewBag.Categories) { <option value="@cat">@cat</option> }
+                </select>
+            </div>
+            <div class="mb-3"><label>@(isKz ? "Бағасы" : "Цена")</label><input asp-for="Price" class="form-control" /></div>
+            <div class="mb-3"><label>@(isKz ? "Саны" : "Количество")</label><input asp-for="Stock" class="form-control" /></div>
+            <button type="submit" class="btn btn-primary w-100">@(isKz ? "Сақтау" : "Сохранить")</button>
+        </form>
+    </div>
+</div>

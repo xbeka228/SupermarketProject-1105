@@ -1,0 +1,20 @@
+@{
+    Layout = "_Layout";
+    var isKz = Context.Request.Cookies[".AspNetCore.Culture"]?.Contains("kk") == true;
+}
+<div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="col-md-4 border p-4 shadow bg-white">
+        <h2 class="text-center">@(isKz ? "Жүйеге кіру" : "Вход")</h2>
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label>@(isKz ? "Логин" : "Логин")</label>
+                <input name="username" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label>@(isKz ? "Құпия сөз" : "Пароль")</label>
+                <input name="password" type="password" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">@(isKz ? "Кіру" : "Войти")</button>
+        </form>
+    </div>
+</div>
